@@ -3,7 +3,7 @@ This file will take instruction of mips32 as input and will convert it into bina
 Any parsing errors will be raised if found.
 */
 
-enum Instruction {
+pub enum Instruction {
     RTypeInstruction(RType),
     ITypeInstruction(IType),
     JTypeInstruction(JType)
@@ -52,6 +52,16 @@ struct JType {
 
 
 impl RType {
+    fn from(&self, instruction: Vec<&str>) -> RType {
+        RType {
+            opcode: String::from("000000"),
+            rs: ,
+            rt:,
+            rd:,
+            shamt: String::from("0"),
+            funct:
+        }
+    }
     fn add(&self) {
 
     }
