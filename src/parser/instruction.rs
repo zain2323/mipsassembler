@@ -6,7 +6,7 @@ Any parsing errors will be raised if found.
 pub enum Instruction {
     RTypeInstruction(RType),
     ITypeInstruction(IType),
-    JTypeInstruction(JType)
+    JTypeInstruction(JType),
 }
 
 /*
@@ -24,7 +24,7 @@ struct RType {
     rt: String,
     rd: String,
     shamt: String,
-    funct: String
+    funct: String,
 }
 
 /*
@@ -38,7 +38,7 @@ struct IType {
     opcode: String,
     rs: String,
     rt: String,
-    immediate: String
+    immediate: String,
 }
 
 /*
@@ -47,58 +47,44 @@ pseudo_address = 26 bits
  */
 struct JType {
     opcode: String,
-    pseudo_address: String
+    pseudo_address: String,
 }
-
 
 impl RType {
     fn from(&self, instruction: Vec<&str>) -> RType {
+        // Instruction = [opcode, rs, rt, rd, shamt, funct]
         RType {
             opcode: String::from("000000"),
-            rs: ,
-            rt:,
-            rd:,
+            rs: instruction[1].to_string(),
+            rt: instruction[2].to_string(),
+            rd: instruction[3].to_string(),
             shamt: String::from("0"),
-            funct:
+            funct: instruction[4].to_string(),
         }
     }
-    fn add(&self) {
+    fn add(&self) {}
 
-    }
+    fn sub(&self) {}
 
-    fn sub(&self) {
+    fn slt(&self) {}
 
-    }
+    fn and(&self) {}
 
-    fn slt(&self) {
-
-    }
-
-    fn and(&self) {
-
-    }
-
-    fn or(&self) {
-
-    }
+    fn or(&self) {}
 }
 
 impl IType {
-    fn lw(&self) {
-
+    fn from(&self, instruction: Vec<&str>) -> IType {
+        todo!()
     }
 
-    fn sw(&self) {
+    fn lw(&self) {}
 
-    }
+    fn sw(&self) {}
 
-    fn beq(&self) {
-
-    }
+    fn beq(&self) {}
 }
 
 impl JType {
-    fn jump(&self) {
-        
-    }
+    fn jump(&self) {}
 }
